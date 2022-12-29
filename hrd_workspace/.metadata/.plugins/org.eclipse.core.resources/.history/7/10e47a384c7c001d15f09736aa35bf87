@@ -1,0 +1,89 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.DriverManager"%>
+<%
+	//DB연결정보
+	Connection conn = null;
+	PreparedStatement pst = null;
+	ResultSet rs = null;
+	//가장 마지막에 추가된 회원 번호를 불러오기
+	String sql ="select max(custno) from member_tbl_02";
+	try {
+		Class.forName("oracle.jdbc.OracleDriver");
+		conn = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe","system","ezen");		
+		pst = conn.prepareStatement(sql);
+		rs = pst.executeQuery(); //select 는 executeQuery()
+		int custno = 100001;	//custno 가장 첫번째 값
+		if (rs.next()){
+			custno = rs.getInt(1)+1;	//getInt 첫번째 값은 0이므로 +1 처리
+		}
+		%>
+	<%
+		
+	} catch (Exception e){
+		e.printStackTrace();	
+	}
+	 %>
+	
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Register Page</title>
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<script type="text/javascript" src="check.js"></script>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<h2>홈쇼핑 회원등록</h2>
+	<form name="frm" action="joinProcess.jsp" method="post">
+	<!-- <form name="frm" action="#" method="post"> -->
+		<table>
+			<tr>
+				<th><B>회원번호(자동발생)</B></th>
+				<td><input type="text" name="custno" value="" readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th><B>회원성명</B></th>
+				<td><input type="text" name="custname"></td>
+			</tr>
+			<tr>
+				<th><B>회원전화</B></th>
+				<td><input type="text" name="phone"></td>
+			</tr>
+			<tr>
+				<th><B>회원주소</B></th>
+				<td><input type="text" name="address"></td>
+			</tr>
+			<tr>
+				<th><B>가입일자</B></th>
+				<td><input type="text" name="joindate"></td>
+			</tr>
+			<tr>
+				<th><B>고객등급[A:VIP,B:일반,C:직원]</B></th>
+				<td><input type="text" name="grade"></td>
+			</tr>
+			<tr>
+				<th><B>도시코드</B></th>
+				<td><input type="text" name="city"></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+				<input type="submit" value="등록" onclick="return registerCheck()">&nbsp;&nbsp;&nbsp;
+				<input type="button" value="조회" onclick="location.href='list.jsp'">
+				</td>
+				
+			</tr>
+		
+		</table>
+	
+	</form>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>

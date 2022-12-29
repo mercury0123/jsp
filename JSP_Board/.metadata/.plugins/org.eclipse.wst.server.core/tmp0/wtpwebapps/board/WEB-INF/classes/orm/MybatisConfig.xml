@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="domain.BoardVO" alias="bvo"/>	<!-- domain.BoardVO 를 bvo로 설정 -->
+	</typeAliases>
+	<environments default="development"> <!-- 개발자환경에서 -->
+		<environment id="development">
+			<transactionManager type="JDBC" />	<!-- JDBC로 주고받고 -->
+			<dataSource type="POOLED">			<!-- db커넥터 풀 방식으로 -->
+				<property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://localhost:3306/javadb"/>
+				<property name="username" value="javauser"/>
+				<property name="password" value="mysql"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="mapper/boardMapper.xml"/>
+	</mappers>
+</configuration>

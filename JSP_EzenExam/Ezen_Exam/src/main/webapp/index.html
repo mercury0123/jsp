@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our superheroes</title>
+    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">    
+    
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #header{
+            font-family: 'helvetica neue', helvetica, arial, sans-serif;
+            text-align: center;
+        }
+        #header h1{
+            font-family: 'Faster One', cursive;
+            font-size: 96px;
+            margin: 20px 0;
+        }
+        #header p{
+            font-size: 32px;
+            font-weight: bold;
+        }
+        #section{
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        #section div{
+            float: left;
+            margin-right: 50px;
+        }
+        #section h2{
+            font-family: 'Faster One', cursive;
+            margin-bottom: 10px;
+        }
+        #section ul li {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+    <div id="section"></div>
+    
+    <script>
+        
+        fetch("https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json")  //뽑아옴
+        .then(response => response.json())
+        .then(json => { 
+            createHeader(json); //멤버즈를 뺀 값들을 헤더 함수로
+            for(i of json.members) add(i);  //멤버즈 만을 add 함수로 for문으로 하나씩 보내줌
+        });
+        function createHeader(json){    //멤버즈를 뺀 값들을 createElement , appendChild 로 뿌려줌
+            var title = document.createElement("h1");   
+            title.innerText = json.squadName;
+            var subTitle = document.createElement("p");
+            subTitle.innerText = `Hometown: ${json.homeTown} // Formed: ${json.formed}`;
+            document.getElementById("header").appendChild(title);
+            document.getElementById("header").appendChild(subTitle);    
+        }
+        function add(json){             //멤버즈만을 add 함수로 쏴주는데 파워를 뺀 나머지 값들을 index [0]부터 들어옴 
+            var div = document.createElement("div");
+            var title = document.createElement("h2");
+            title.innerText = json.name;
+            var description = document.createElement("p");
+            description.innerHTML += `Secret identity: ${json.secretIdentity} <br>`;
+            description.innerHTML += `Age: ${json.age} <br>`;
+            description.innerHTML += `Superpowers: <br>`;
+            var ul = `<ul>`;
+            for(i of json.powers) ul += `<li>${i}</li>`;    //파워만을 for문을 활용 li 태그로 뿌려줌
+            ul += `</ul>`;
+            description.innerHTML += ul;
+            div.appendChild(title);
+            div.appendChild(description);
+            document.getElementById("section").appendChild(div);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+package repository;
+
+import org.apache.ibatis.session.SqlSession;
+
+import domain.BoardVO;
+import orm.DatabaseBuilder;
+
+public class BoardDAOImpl implements BoardDAO {
+	//DB와 연결
+	private SqlSession sql;	//import!!
+	private final String NS = "BoardMapper."; //namespace 설정!! 뒤에 . 잊지말것!! 매번 맵퍼. 찍기 번거로우므로 만들어서 변수에 넣어준것
+	
+	public BoardDAOImpl() {
+		new DatabaseBuilder(); //orm -> db 연결 클래스 객체 생성
+		sql = DatabaseBuilder.getFactory().openSession();
+	}
+
+	@Override
+	public int insert(BoardVO bvo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	// 각 연결요청 오버라이딩
+}

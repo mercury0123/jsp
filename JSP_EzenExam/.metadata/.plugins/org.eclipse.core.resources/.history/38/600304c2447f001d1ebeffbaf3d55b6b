@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+
+* {
+	margin: 0;
+	padding: 0;	
+}
+
+body{
+	width: 100%;
+}
+
+header {	
+	top: 0px;
+	width: 100%;
+	height: 80px;
+	background-color: blue;
+	color : white;
+	text-align: center;
+	line-height: 80px	
+}
+
+nav{
+	
+	top: 80px;
+	width: 100%;
+	height: 40px;
+	background-color: lightblue;
+	color : white;
+	text-align: center;
+	line-height: 40px;
+}
+
+nav li {
+	list-style: none;
+	float: left; 
+	margin-left: 40px;
+	color : white;
+	font-size: 20px;
+}
+
+a {
+	text-decoration: none;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	top: 120px;
+	width: 100%;
+	height:100%;
+	background-color: lightgrey;	
+}
+
+h2 {
+	margin-top: 20px;
+	text-align: center;
+}
+
+footer{
+	
+	bottom: 0px;
+	width: 100%;
+	height: 60px;
+	background-color: blue;
+	color : white;
+	text-align: center;
+	line-height: 60px
+}
+
+table {
+	width:70%;
+	display: table;
+	margin: 20px auto;
+	border : 1px solid black;
+	border-collapse: collapse;
+	text-align: center;	
+}
+
+table>tr {
+	display: table-row;	
+	border : 1px solid black;
+}
+
+table>tbody>tr>th, table>tbody>tr>td {
+	display:table-cell;
+	height:50px;
+	border : 1px solid black;
+	font-size: 15px;
+	font-weight: 700;
+	padding: 10px 0 10px 0;
+}
+
+table input[type="submit"], table input[type="button"]{
+	padding: 5px 10px;
+	margin: 10px;
+} 
+table input[type="text"] {
+	margin: 5px;
+	height: 30px;
+	width: 300px;
+}

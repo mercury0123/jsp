@@ -1,0 +1,23 @@
+package service;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import domain.BoardVO;
+import repository.BoardDAO;
+import repository.BoardDAOImpl;
+
+public class BoardServiceImpl implements BoardService {
+	private static final Logger log = LoggerFactory.getLogger(BoardServiceImpl.class);	//로거 slf4j로 임포트
+	private BoardDAO bdao; //레포지터리에 인터페이스 생성
+	
+	public BoardServiceImpl () {
+		bdao = new BoardDAOImpl();	//레포지터리에 클래스 생성
+	}
+
+	@Override
+	public int register(BoardVO boardVO) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+}

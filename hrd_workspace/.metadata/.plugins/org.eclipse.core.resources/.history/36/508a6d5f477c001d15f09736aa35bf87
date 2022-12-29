@@ -1,0 +1,29 @@
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% 
+	//DB연결정보
+	Connection conn = null;
+	PreparedStatement pst = null;
+	//request encoding 설정
+	request.setCharacterEncoding("utf-8");
+	//
+	String custno = request.getParameter("custno");
+	String custname = request.getParameter("custname");
+	String custno = request.getParameter("custno");
+	String custno = request.getParameter("custno");
+	String custno = request.getParameter("custno");
+	String custno = request.getParameter("custno");
+	String custno = request.getParameter("custno");
+	
+	
+	try{
+		Class.forName("oracle.jdbc.OracleDriver");
+		conn = DriverManager.getConnection(("jdbc:oracle:thin:@//localhost:1521/xe","system","ezen");
+	} catch(Exception e){
+		
+	}
+%>

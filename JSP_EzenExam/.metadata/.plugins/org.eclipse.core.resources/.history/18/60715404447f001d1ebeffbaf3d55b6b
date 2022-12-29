@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Index Page</title>
+<link href="style.css" rel="stylesheet">
+</head>
+<style>
+	header {
+	 	position: fixed;
+	}
+	nav{
+		position: fixed;
+	}
+	section {
+		display : block;
+		position: fixed;
+		height: 100%;
+	}
+	footer {
+		position: fixed;
+	}
+</style>
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<h2> 게시판 CRUD 페이지 작성</h2>
+<ol>
+	<li>1.게시판 테이블을 생성한다.</li>
+	<li>2.게시글 입력 화면을 작성한다.</li>
+	<li>3.회원정보 조회 화면을 작성한다.</li>
+	<li>4.조회 화면에서 게시글의 조회 및 수정 삭제기능을 구현한다</li>
+</ol>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+
+</body>
+</html>

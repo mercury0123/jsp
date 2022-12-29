@@ -1,0 +1,49 @@
+package controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import service.BoardService;
+import service.BoardServiceImpl;
+
+
+@WebServlet("/brd/*")
+public class BoardController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	//로그기록 객체. final은 뒤에 첫글자 대문자로
+	private static final Logger log = LoggerFactory.getLogger(BoardController.class); 
+	// Logger빨간줄 slf4j형식으로 import 
+	// controller -> service로 ->dao로
+	private BoardService bsv; //service에 interface생성
+	
+	private String destPage; 		//목적지 위치 기록을 위한 변수 생성
+	private RequestDispatcher rdp; 	//jsp에서 요청받은 값을 가져오고,처리한 결과를 보내주는 객체
+	private int isOk; 				//구문 결과 체크 변수 생성
+		
+	public BoardController() {
+		bsv =new BoardServiceImpl(); //bsv 구현할 객체 생생 service에 class생성
+	}
+		
+	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		log.info("test입니다");
+	}
+	
+	//모두 service 값으로 처리
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		service(req, res);
+	}
+	
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {		
+		service(req, res);
+	}
+}

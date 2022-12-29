@@ -1,0 +1,10 @@
+-- cmd에서 mysql -ujavauser -pmysql → show databases;→use javadb;
+
+create table board(
+bno int not null auto_increment,
+title varchar(100) not null,
+writer varchar(100) not null,
+content text,
+reg_date datetime default current_timestamp,
+read_count int default 0,
+primary key(bno));

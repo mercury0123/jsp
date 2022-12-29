@@ -1,0 +1,77 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%
+	//DB연결정보
+	Connection conn = null;
+	PreparedStatement pst = null;
+	ResultSet rs = null;
+	
+	try {
+		
+	} catch (Exception e){
+		e.printStackTrace();	
+	}
+	//request encoding 설정
+	
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Register Page</title>
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<script type="text/javascript" src="check.js"></script>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<h2>홈쇼핑 회원등록</h2>
+	<form name="frm" action="joinProcess.jsp" method="post">
+	<!-- <form name="frm" action="#" method="post"> -->
+		<table>
+			<tr>
+				<th><B>회원번호(자동발생)</B></th>
+				<td><input type="text" name="custno" value="" readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th><B>회원성명</B></th>
+				<td><input type="text" name="custname"></td>
+			</tr>
+			<tr>
+				<th><B>회원전화</B></th>
+				<td><input type="text" name="phone"></td>
+			</tr>
+			<tr>
+				<th><B>회원주소</B></th>
+				<td><input type="text" name="address"></td>
+			</tr>
+			<tr>
+				<th><B>가입일자</B></th>
+				<td><input type="text" name="joindate"></td>
+			</tr>
+			<tr>
+				<th><B>고객등급[A:VIP,B:일반,C:직원]</B></th>
+				<td><input type="text" name="grade"></td>
+			</tr>
+			<tr>
+				<th><B>도시코드</B></th>
+				<td><input type="text" name="city"></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+				<input type="submit" value="등록" onclick="return registerCheck()">&nbsp;&nbsp;&nbsp;
+				<input type="button" value="조회" onclick="location.href='list.jsp'">
+				</td>
+				
+			</tr>
+		
+		</table>
+	
+	</form>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>

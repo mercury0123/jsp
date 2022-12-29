@@ -1,0 +1,33 @@
+package repository;
+
+import org.apache.ibatis.session.SqlSession;
+
+import domain.BoardVO;
+import orm.DatabaseBuilder;
+
+public class BoardDAOImpl implements BoardDAO {
+	private static final Logger log = LoggerFactory.getLogger(BoardDAOImpl.class);
+	//DB와 연결
+	private SqlSession sql;	
+	private final String NS = "BoardMapper."; 
+	
+	public BoardDAOImpl() {
+		new DatabaseBuilder(); 
+		sql = DatabaseBuilder.getFactory().openSession();
+	}
+	// 각 연결요청 오버라이딩
+	
+	@Override
+	public int insert(BoardVO bvo) {
+		log.info("insert check 3");
+		
+		int isOk = sql.insert("BoardMapper.add",bvo); //보드 맵퍼에게 add라는 값을 가지는 것을 실행해서 bvo에 줌
+		if(isOk>0) {
+			sql.commit(); //실제 값이 1개가 완료되었다면, 실제 commit을 여기서 해줌
+			//즉 isOk가 되어야만 실행
+		}		
+		return isOk;
+	}
+	
+	
+}

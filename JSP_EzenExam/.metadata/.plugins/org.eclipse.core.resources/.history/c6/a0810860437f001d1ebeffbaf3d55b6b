@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Index Page</title>
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<h2> 게시판 CRUD 페이지 작성</h2>
+<ol>
+	<li>1.회원정보 테이블을 생성한다.</li>
+	<li>2.매출정보 테이블을 생성한다.</li>
+	<li>3.회원정보, 매출정보 테이블에 제시된 문제지의 참조데이터를 추가 생성한다.</li>
+	<li>4.회원정보 입력 화면프로그램을 작성한다.</li>
+	<li>5.회원정보 조회 프로그램을 작성한다.</li>
+	<li>6.회원매출정보 조회 프로그램을 작성한다.</li>
+</ol>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+
+</body>
+</html>
